@@ -10,6 +10,8 @@
     <% if(typeof css !== 'undefined') {%>
         <link rel="stylesheet" href="css/<%= css %>.css">
     <% } %>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://cdn.rawgit.com/mladenplavsic/css-ripple-effect/35c35541/dist/ripple.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -31,9 +33,15 @@
             <li><a href="#">NIT MAP</a></li>
             <li><a href="#">About TCF</a></li>
             <li><a href="#">Feedback</a></li>
-            <li><a href="#">Log in</a></li>
-        </div>
+            <% if(loggedIn){ %>
+            <li><a href="#">Logout</a></li>
+            <% } else { %>
+            <li onclick="showModal()"><a href="#">Log in</a></li>
+            <% } %>
+        </ul>
         <script async>
+
+            // For navbar response in mobile view
             const hamburger = document.querySelector(".hamburger");
             const navLinks = document.querySelector(".nav-links");
             const links = document.querySelectorAll(".nav-links li");
@@ -44,8 +52,112 @@
                     link.classList.toggle("fade");
                 });
             });
+            // end
+
         </script>
+
+        
     </nav>
+
+    <div class="modal-bg">
+        <div class="close-btn" onclick="hideModal()">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <div class="modal">
+
+            <div class="tab-container">
+                <div class="btn-container">
+                    <button onclick="showSignup()" class="active">Sign up</button>
+                    <button onclick="showLogin()"> Log in</button>
+                </div>
+                <div class="tab-panel signup">
+                    <div class="signup-box">
+                        <form action="/signup" method="post">
+                            <div class="textbox">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input type="text" placeholder="Your name" required>
+                            </div>
+
+                            <div class="textbox">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <input type="email" placeholder="Your email" required autocomplete="off">
+                            </div>
+    
+                            <div class="textbox">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <input type="password" placeholder="Your password" required>
+                            </div>
+
+                            <div class="submit-btn">
+                                <input type="submit" value="Sign Up">
+                            </div>
+    
+                            
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-panel login" style="display: none;">
+                    <div class="login-box">
+                        <form action="/login" method="post">
+                            <div class="textbox">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <input type="email" placeholder="Your email" required>
+                            </div>
+    
+                            <div class="textbox">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <input type="password" placeholder="Your password" required>
+                            </div>
+
+                            <div class="submit-btn">
+                                <input type="submit" value="Log In">
+                            </div>
+    
+                            
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            <script>
+                //for changing panels
+                const signupTabBtn = document.querySelectorAll('.tab-container .btn-container button')[0];
+                const loginTabBtn = document.querySelectorAll('.tab-container .btn-container button')[1];
+                const signupPanel = document.querySelector('.tab-container .tab-panel.signup');
+                const loginPanel = document.querySelector('.tab-container .tab-panel.login');
+                function showSignup(){
+                    loginTabBtn.classList.remove('active');
+                    signupTabBtn.classList.add('active');
+
+                    loginPanel.style.display = "none";
+                    signupPanel.style.display = "block";
+                }
+
+                function showLogin(){
+                    loginTabBtn.classList.add('active');
+                    signupTabBtn.classList.remove('active');
+
+                    loginPanel.style.display = "block";
+                    signupPanel.style.display = "none";
+                }
+
+
+            </script>
+
+        </div>
+    </div>
+    <script>
+        const modalBg = document.querySelector('.modal-bg');
+        function showModal(){
+            
+            modalBg.classList.add('active');
+        }
+        function hideModal(){
+            modalBg.classList.remove('active');
+        }
+        showModal();
+    </script>
 
     <section>
 
