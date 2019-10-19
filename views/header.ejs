@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SAC 3.0</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/styles.css">
+    <% if(typeof css !== 'undefined') {%>
+        <link rel="stylesheet" href="css/<%= css %>.css">
+    <% } %>
+    <link href="https://cdn.rawgit.com/mladenplavsic/css-ripple-effect/35c35541/dist/ripple.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="/"><img src="images/logo.jpg" alt="logo"><span>SAC 3.O</span></a>
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            
+        </div>
+        <ul class="nav-links">
+            <li><a class="ripple" href="#">SAS COUNCIL 2019</a></li>
+            <li><a class="ripple" href="#">NIT PATNA CLUBS</a></li>
+            <li><a href="#">About SAC</a></li>
+            <li><a href="#">NIT MAP</a></li>
+            <li><a href="#">About TCF</a></li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Log in</a></li>
+        </div>
+        <script async>
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+            const links = document.querySelectorAll(".nav-links li");
+
+            hamburger.addEventListener("click", () => {
+                navLinks.classList.toggle("open");
+                links.forEach(link => {
+                    link.classList.toggle("fade");
+                });
+            });
+        </script>
+    </nav>
+
+    <section>
+
+
