@@ -160,14 +160,14 @@ nav{
 .modal{
   font-family: 'Montserrat', sans-serif;
   background-color: white;
-  height: 60%;
+  height: 65%;
   width: 30%;
   border-radius: 8px;
   overflow: auto;
   /* padding: 8px; */
 }
 .tab-container{
-  height: 85%; /* 5000/height(.modal) */
+  height: 80%; /* 5000/height(.modal) */
   width: 100%;
   /* background-color: blue; */
   /* border-bottom: solid 2px black; */
@@ -253,6 +253,32 @@ nav{
 .tab-panel .submit-btn input:hover{
   background-color: rgb(14, 182, 14);
 }
+
+
+/* social login */
+.social-login{
+  width: 100%;
+  text-align: center;
+}
+.social-login .container{
+  width: 100%;
+  margin: 12px auto;
+}
+.social-login .container ul{
+  list-style-type: none;
+  width: 100%;
+}
+.social-login .container ul li{
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  margin: 5px 13px;
+}
+.social-login .container ul li img, .social-login .container ul li a{
+  height: 100%;
+  width: 100%;
+}
+
 /* ENDS */
 
 /* CSS FOR ASIDE */
