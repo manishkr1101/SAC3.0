@@ -1,0 +1,25 @@
+.home.container{
+    height: 90vh;
+    width: 100%;
+    background-color: blue;
+}
+.home.container > * {
+    overflow: auto;
+}
+.side-bar-container{
+    height: 100%;
+    /* background-color: #ea4c89; */
+}
+.side-bar-container .search-box{
+    width: 100%;
+    height: 30px;
+    background-color: gray;
+}
+.posts-container{
+    height: 100%;
+    background-color: #211717;
+}
+.notices-container{
+    height: 100%;
+    background-color: green;
+}

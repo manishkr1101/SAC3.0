@@ -7,6 +7,7 @@
     <title>SAC 3.0</title>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/logo.jpg">
     <% if(typeof css !== 'undefined') {%>
         <link rel="stylesheet" href="css/<%= css %>.css">
     <% } %>
@@ -34,7 +35,7 @@
             <li><a href="#">About TCF</a></li>
             <li><a href="#">Feedback</a></li>
             <% if(loggedIn){ %>
-            <li><a href="#">Logout</a></li>
+            <li><a href="/logout">Logout</a></li>
             <% } else { %>
             <li onclick="showModal()"><a href="#">Log in</a></li>
             <% } %>
@@ -76,17 +77,17 @@
                         <form action="/signup" method="post">
                             <div class="textbox">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <input type="text" placeholder="Your name" required>
+                                <input type="text" placeholder="Your name" required name="name">
                             </div>
 
                             <div class="textbox">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <input type="email" placeholder="Your email" required autocomplete="off">
+                                <input name="username" type="email" placeholder="Your email" required autocomplete="off">
                             </div>
     
                             <div class="textbox">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
-                                <input type="password" placeholder="Your password" required>
+                                <input name="password" type="password" placeholder="Your password" required>
                             </div>
 
                             <div class="submit-btn">
@@ -102,12 +103,12 @@
                         <form action="/login" method="post">
                             <div class="textbox">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <input type="email" placeholder="Your email" required>
+                                <input name="username" type="email" placeholder="Your email" required>
                             </div>
     
                             <div class="textbox">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
-                                <input type="password" placeholder="Your password" required>
+                                <input name="password" type="password" placeholder="Your password" required>
                             </div>
 
                             <div class="submit-btn">
@@ -141,6 +142,7 @@
                     loginPanel.style.display = "block";
                     signupPanel.style.display = "none";
                 }
+                showLogin();
 
 
             </script>

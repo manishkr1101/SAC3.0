@@ -38,7 +38,8 @@ nav{
     border-radius: 5px;
 }
 .nav-links li a:hover{
-    background-color: #a9abac;
+    background-color: #fafafa;
+    color: #02161d;
 }
 
 .logo {
@@ -273,10 +274,19 @@ nav{
   width: 60px;
   display: inline-block;
   margin: 5px 13px;
+  transform: translate(0,0);
+  transition: all 0.4s;
+  background: none;
+  border-radius: 50%;
+}
+.social-login .container ul li:hover{
+  transform: translate(0,-10px);
+  box-shadow: 0 8px 6px -6px black;
 }
 .social-login .container ul li img, .social-login .container ul li a{
   height: 100%;
   width: 100%;
+  background: none;
 }
 
 /* ENDS */
