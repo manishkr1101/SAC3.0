@@ -27,6 +27,7 @@ app.use(passport.session());
 
 const User = require('./user');
 passport.use(User.createStrategy());
+const Blog = require('./blog');
 
 // mongoose.connect('mongodb://localhost:27017/sacUserDB', {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true});
 
@@ -47,7 +48,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
       clog(profile);
-    User.findOrCreate({ googleId: profile.id, name: profile.displayName }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id, name: profile.displayName, img_url: profile.photos[0].value }, function (err, user) {
         if(err){
             clog(err);
         }
@@ -79,12 +80,12 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
       clog(profile);
-    User.findOrCreate({ facebookId: profile.id, name: profile.displayName }, function (err, user) {
+    User.findOrCreate({ facebookId: profile.id, name: profile.displayName, img_url: profile.photos[0].value }, function (err, user) {
         if(err){
             clog(err);
         }
         else{
-            clog(user);
+            // clog(user);
         }
       return cb(err, user);
     });
@@ -110,7 +111,7 @@ app.get('/', function(req, res){
     }
     else{
         // clog(req.user);
-        res.render('index.ejs',{css: 'home', loggedIn: false});
+        res.render('login.ejs', {loggedIn: false});
     }
     
 });
@@ -120,8 +121,16 @@ app.get('/home', (req, res) => {
         res.redirect('/');
     }
     else{
-        clog(req.user);
-        res.render('index', {css: 'home', loggedIn: true});
+        // clog(req.user);
+        Blog.find({}, (err, blogs) => {
+            if(err){
+                res.send({err: err});
+            }
+            else{
+                // clog(blogs);
+                res.render('index', {css: 'home', loggedIn: true, blogs: blogs});
+            }
+        });
     }
 })
 
@@ -160,6 +169,36 @@ app.post('/signup', (req, res) => {
             });
         }
     } );
+});
+
+app.post('/blog', (req, res) => {
+    // clog({
+    //     'user':req.user,
+    //     authInfo: req.authInfo,
+    //     session: req.session
+    // });
+    const user = req.user;
+    const blog = new Blog({
+        title: req.body.title,
+        content: req.body.content,
+        author: user.name,
+        user_id: user._id,
+        img_url: user.img_url
+    });
+    blog.save()
+    .then(doc => {
+        console.log(doc);
+        res.redirect('/home');
+    })
+    .catch(err => {
+        clog(err);
+        res.send(err);
+    });
+});
+
+app.get('/request', (req, res) => {
+    res.status(200).send('done');
+    console.log(req);
 });
 
 app.get('/logout', (req, res) => {

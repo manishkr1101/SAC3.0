@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
         password: String,
         googleId: String,
         facebookId: String,
+        img_url: {type: String, default: '/images/logo.jpg'}
     }
 );
 

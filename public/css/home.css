@@ -126,3 +126,28 @@
     top: 0; */
     background-color: green;
 }
+
+
+
+/* for mobile */
+@media only screen and (max-width: 768px) {
+
+    body{
+        overflow: auto;
+    }
+    
+    .home.container{
+        height: auto;
+        overflow: auto;
+    }
+    .home.container .side-bar-container{
+        height: auto;
+    }
+    .notices-container{
+        height: auto;
+    }
+    .posts-container .blog-container{
+        width: 100%;
+        margin: 0;
+    }
+}
