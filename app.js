@@ -111,7 +111,7 @@ app.get('/', function(req, res){
     }
     else{
         // clog(req.user);
-        res.render('login.ejs', {loggedIn: false});
+        res.render('index.ejs', {css:'home', loggedIn: false, blogs: []});
     }
     
 });
@@ -160,7 +160,8 @@ app.post('/signup', (req, res) => {
         
         if(err){
             clog(err);
-            res.redirect('/');
+            // res.redirect('/');
+            res.send('user already exist');
         }
         else{
             

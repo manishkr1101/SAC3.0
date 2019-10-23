@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
-mongoose.connect('mongodb://localhost:27017/sacUserDB', {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect(`mongodb+srv://manish:${process.env.MONGO_ATLAS_PASSWORD}@cluster0-rp3y8.mongodb.net/sacDB`, {useNewUrlParser: true,  useUnifiedTopology: true, useCreateIndex: true});
 
 
 

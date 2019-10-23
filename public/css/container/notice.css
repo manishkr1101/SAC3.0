@@ -1,0 +1,35 @@
+.notice{
+    margin: 24px auto;
+    padding: 8px;
+    text-align: left;
+    width: 90%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 6px #cb9f9f;
+}
+.notice .title{
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.notice .line{
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    margin: 5px 0;
+}
+.notice .hash-tag::before{
+    content: "#";
+}
+.notice .hash-tag{
+    font-style: italic;
+    margin: 5px 0;
+}
+.notice .body{
+    margin: 5px 0;
+}
+.notice .read-more{
+    font-weight: bold;
+    color: blue;
+    cursor: pointer;
+    margin: 5px;
+}

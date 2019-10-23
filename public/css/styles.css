@@ -34,12 +34,14 @@ nav{
 
 
 .nav-links li a{
-    padding: 10px 20px;
+    padding: 30px 20px;
     border-radius: 5px;
+    font-size: 20px;
 }
 .nav-links li a:hover{
     background-color: #fafafa;
     color: #02161d;
+    transition: all 0.4s;
 }
 
 .logo {
@@ -138,7 +140,7 @@ nav{
   cursor: pointer;
 }
 .modal-bg{
-  /* z-index: 10; */
+  z-index: 10;
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -220,6 +222,11 @@ nav{
   margin: auto 13px;
   font-size: 24px;
 }
+/* .tab-container .tab-panel .textbox i::after{
+  content: "|";
+  font-size: 24px;
+  display: table;
+} */
 .tab-container .tab-panel .textbox input{
   width: 90%;
   height: 100%;
@@ -283,10 +290,15 @@ nav{
   transform: translate(0,-10px);
   box-shadow: 0 8px 6px -6px black;
 }
-.social-login .container ul li img, .social-login .container ul li a{
+.social-login .container ul li:hover img, .social-login .container ul li:hover a{
   height: 100%;
   width: 100%;
+}
+.social-login .container ul li img, .social-login .container ul li a{
+  height: 90%;
+  width: 90%;
   background: none;
+  transition: all 0.4s;
 }
 
 /* ENDS */
