@@ -8,9 +8,9 @@
             </div>
             <div class="select-feed">
                 <div class="select-container">
-                    <select name="post" id="" onchange="location = this.value">
-                        <option value="/mypost"><a href="#"> My Post</a></option>
-                        <option value="/allpost"><a href="#"> All Post</a></option>
+                    <select name="post" id="" onchange="location = this.value" >
+                        <option value="/mypost" <%= myPost %>  ><a href="#"> My Post</a></option>
+                        <option value="/allpost" <%= allPost %> ><a href="#"> All Post</a></option>
                     </select>
                 </div>
                 
@@ -29,7 +29,7 @@
 
         <div class="col-7 posts-container">
 
-            <div class="blog-container">
+            <!-- <div class="blog-container">
                 <div class="blog">
                     <div class="blog-header">
                         <div class="img-container">
@@ -53,7 +53,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quo rerum eum voluptatibus debitis animi eos labore, laborum corrupti molestias totam! Aliquam eius cum iure ut totam qui neque dolor.
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="blog-container">
                 <div class="blog">
@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <% blogs.forEach(blog => { %>
+            <% for(let i=blogs.length-1;i>=0;i--){ let blog = blogs[i]; %>
 
             
             <div class="blog-container">
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <% }); %>
+            <% } %>
 
         </div>
         <div class="col-3 notices-container">

@@ -113,7 +113,7 @@ app.get('/', function(req, res){
     }
     else{
         // clog(req.user);
-        res.render('index.ejs', {css:'home', loggedIn: false, blogs: []});
+        res.render('index.ejs', {css:'home', loggedIn: false, blogs: [], myPost: '', allPost: 'selected'});
     }
     
 });
@@ -130,7 +130,7 @@ app.get('/home', (req, res) => {
             }
             else{
                 // clog(blogs);
-                res.render('index', {css: 'home', loggedIn: true, blogs: blogs});
+                res.render('index', {css: 'home', loggedIn: true, blogs: blogs, myPost: '', allPost: 'selected'});
             }
         });
     }
@@ -199,6 +199,28 @@ app.post('/blog', (req, res) => {
     });
 });
 
+app.get('/mypost', (req, res) => {
+    if(!req.isAuthenticated()){
+        res.redirect('/');
+    }
+    else{
+        clog(req.user);
+        Blog.find({user_id: req.user._id}, (err, blogs) => {
+            if(err){
+                res.send({err: err});
+            }
+            else{
+                clog(blogs);
+                res.render('index', {css: 'home', loggedIn: true, blogs: blogs, myPost: 'selected', allPost: ''});
+            }
+        });
+    }
+})
+
+app.get('/allpost', (req, res) => {
+    res.redirect('/home');
+})
+
 app.get('/request', (req, res) => {
     res.status(200).send('done');
     console.log(req);
@@ -214,6 +236,9 @@ app.get('/env', (req, res) => {
         env: process.env,
         url: process.env.BASE_URL
     })
+})
+app.get('/user', (req, res) => {
+    res.send(req.user);
 })
 
 let PORT = process.env.PORT;
