@@ -11,6 +11,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
+const BASE_URL = 'http://localhost:3000';
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -44,7 +46,7 @@ passport.serializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/sac3-0"
+    callbackURL: `${process.env.BASE_URL || BASE_URL}/auth/google/sac3-0`
   },
   function(accessToken, refreshToken, profile, cb) {
       clog(profile);
@@ -59,7 +61,7 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
-
+// console.log(process.env);
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
 app.get('/auth/google/sac3-0', 
@@ -75,7 +77,7 @@ app.get('/auth/google/sac3-0',
 passport.use(new FacebookStrategy({
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/sac3-0",
+    callbackURL: `${process.env.BASE_URL || BASE_URL}/auth/facebook/sac3-0`,
     profileFields: ['id', 'displayName', 'photos']
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -206,6 +208,13 @@ app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
+
+app.get('/env', (req, res) => {
+    res.send({
+        env: process.env,
+        url: process.env.BASE_URL
+    })
+})
 
 let PORT = process.env.PORT;
 if(PORT == null){
