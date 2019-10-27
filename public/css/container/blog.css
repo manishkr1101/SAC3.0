@@ -61,16 +61,31 @@
 /* for mobile */
 @media only screen and (max-width: 768px) {
 
+    .blog .blog-header{
+        width: 100%;
+        height: auto;
+        /* border-bottom: solid 1px gray; */
+    }
     .blog .title{
-        font-size: 24px;
+        font-size: 1rem;
     }
     .blog .header{
         padding-left: 0;
+        width: 80%;
     }
     .blog .content{
-        font-size: 20px;
+        font-size: 0.85rem;
     }
     .blog .img-container{
-        width: 50px;
+        width: 20%;
+        padding: 12px 8px;
+    }
+    .blog .img-container img{
+        height: auto;
+        width: 100%;
+        margin: 10px auto;
+    }
+    .blog .details{
+        font-size: 0.7rem;
     }
 }

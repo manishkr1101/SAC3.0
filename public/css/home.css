@@ -220,6 +220,26 @@
     }
     .notices-container{
         height: auto;
+        padding: 0;
+    }
+    .notices-container .notice-board{
+        position: relative;
+        height: 60vh;
+        overflow: auto;
+    }
+    .notices-container .notice-board h1{
+        position: sticky;
+        top: 0;
+    }
+    .notices-container .contact{
+        position: static;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        
+    }
+    .posts-container{
+        padding: 8px;
     }
     .posts-container .blog-container{
         width: 100%;

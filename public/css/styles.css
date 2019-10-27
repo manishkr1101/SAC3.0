@@ -300,7 +300,47 @@ nav{
   background: none;
   transition: all 0.4s;
 }
+@media screen and (max-width: 768px){
+  .modal{
+    height: 80%;
+    width: 90%;
+  }
+  .modal-bg .close-btn{
+    top: 8px;
+  }
 
+
+  .login .login-box, .signup .signup-box{
+    width: 90%;
+  }
+  .tab-container{
+    height: auto;
+  }
+  .tab-container .btn-container{
+    height: 3.5rem;
+  }
+  .tab-container .btn-container button{
+    font-size: 1.4rem;
+  }
+  .tab-container .tab-panel .textbox{
+    height: 3rem;
+  }
+  .tab-container .tab-panel .textbox i{
+    font-size: 1rem;
+  }
+  .tab-container .tab-panel .textbox input{
+    font-size: 1rem;
+  }
+  .tab-panel .submit-btn{
+    position: static;
+    height: 3.2rem;
+    margin: auto;
+    width: 100%;
+  }
+  .tab-panel .submit-btn input{
+    font-size: 1.2rem;
+  }
+}
 /* ENDS */
 
 /* CSS FOR ASIDE */
